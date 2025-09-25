@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التحقق من الوثائق</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tahoma", "Arial", sans-serif;
+      background: #fff;
+      direction: rtl;
+    }
+
+    .page {
+      max-width: 600px; /* جعل الصفحة أعرض */
+      margin: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      background: #f7f9fc;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .back-btn {
+      background: #2b7dd6;
+      color: #fff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 15px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .row {
+      margin-bottom: 8px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .value {
+      margin-right: 5px;
+      color: #333;
+    }
+
+    .status {
+      color: green;
+      font-weight: bold;
+    }
+
+    .footer {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      background: #f7f9fc;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-download {
+      background: #2b7dd6;
+      color: #fff;
+    }
+
+    .btn-check {
+      background: #f0f2f9;
+      color: #2b7dd6;
+      border: 1px solid #2b7dd6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page" id="capture">
+    <div class="header">
+      <button class="back-btn">العودة</button>
+      <h2>التحقق من الوثائق</h2>
+    </div>
+
+    <div class="content">
+      <p>
+        خدمة تتيح التحقق من الوثائق التي تم تصديقها إلكترونياً عبر بوابة خدمات المشتركين.
+        وللتحقق من شهادة الاشتراك الرجاء إدخال الرقم المرجعي الخاص بالوثيقة.
+      </p>
+
+      <div class="row"><span class="label">اسم الغرفة:</span> <span class="value">غرفة عنيزة</span></div>
+      <div class="row"><span class="label">اسم المنشأة:</span> <span class="value">مؤسسة جبل ركاز للتعدين</span></div>
+      <div class="row"><span class="label">الرقم الموحد:</span> <span class="value">7048968478 (700)</span></div>
+      <div class="row"><span class="label">رقم الطلب:</span> <span class="value">11534217</span></div>
+      <div class="row"><span class="label">نوع الطلب:</span> <span class="value">طلب مفتوح</span></div>
+      <div class="row"><span class="label">اسم مقدم الطلب:</span> <span class="value">عبدالرحمن عايض الحربي</span></div>
+      <div class="row"><span class="label">تاريخ ووقت إنشاء الطلب:</span> <span class="value">09/25/2025 - 08:13 م</span></div>
+      <div class="row"><span class="label">مبلغ الطلب:</span> <span class="value">35 ريال</span></div>
+      <div class="row"><span class="label">تاريخ صلاحية الطلب:</span> <span class="value">09/25/2026 - 08:13 م</span></div>
+      <div class="row"><span class="label">رقم السجل التجاري:</span> <span class="value">1128190086</span></div>
+      <div class="row"><span class="label">حالة الطلب:</span> <span class="status">تم قبول الطلب وساري</span></div>
+    </div>
+
+    <div class="footer">
+      <button class="btn btn-download" id="downloadBtn">تحميل</button>
+      <button class="btn btn-check">التحقق مرة أخرى</button>
+    </div>
+  </div>
+
+  <!-- مكتبة html2canvas -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function () {
+      const capture = document.getElementById('capture');
+      html2canvas(capture, { scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'طلب-11534217.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+  </script>
+
+</body>
+</html>
